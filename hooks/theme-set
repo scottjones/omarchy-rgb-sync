@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# omarchy theme-set hook: sync all peripheral RGB to the new theme's accent.
+#
+# Install with:
+#   omarchy hook install theme-set ~/code/personal/omarchy-rgb-sync/hooks/theme-set
+# omarchy passes the new theme slug as $1 (unused here — each script reads the
+# active theme's colors.toml itself).
+
+# Force system python (has pacman-installed python-hid and python-evdev)
+# instead of the mise-shimmed python that doesn't see pacman site-packages.
+# This also fixes /usr/bin/ratbagctl, which uses `#!/usr/bin/env python3`.
+export PATH="/usr/bin:$PATH"
+
+REPO="$HOME/code/personal/omarchy-rgb-sync"
+
+# GMMK 2 keyboard (QMK Raw HID)
+"$REPO/keyboard-gmmk2/set_rgb.py"
+
+# Logitech G903 mouse (ratbagctl / libratbag)
+"$REPO/mouse-logitech-g903/set_rgb.py"
+
+# Glorious Model D 2 Wireless mouse (hidapi feature report)
+"$REPO/mouse-glorious-model-d2/set_rgb.py"
+
+# Alienware Aurora R7 case (acpi_call WMAX)
+"$REPO/case-alienware-aurora-r7/set_rgb.py"
