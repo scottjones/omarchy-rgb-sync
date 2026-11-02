@@ -19,8 +19,15 @@ COLORS_PATHS = (
 )
 
 # Terminal palette keys used (with `accent`) to build a multi-colour animation.
+# omarchy 4.5 renamed colors.toml's ANSI keys from `colorN` to semantic names
+# (`red`, `bright_red`, ...). Both are listed; whichever the theme has is used,
+# and hue dedup drops any overlap. Semantic order mirrors color1-6 / color9-14.
 PALETTE_KEYS = (
-    "accent", "color1", "color2", "color3", "color4", "color5", "color6",
+    "accent",
+    "red", "green", "yellow", "blue", "magenta", "cyan", "orange",
+    "bright_red", "bright_green", "bright_yellow", "bright_blue",
+    "bright_magenta", "bright_cyan",
+    "color1", "color2", "color3", "color4", "color5", "color6",
     "color9", "color10", "color11", "color12", "color13", "color14",
 )
 
